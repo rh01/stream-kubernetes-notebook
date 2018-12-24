@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: shenhengheng-rt
+spec:
+  replicas: 1 
+  template:
+    metadata: 
+      labels:
+        app: rt
+    spec:
+      containers:
+      - name: shenhengheng-rt
+        image: bigdatateam/rt-course4
+        ports:
+        - containerPort: 8888 
+        volumeMounts:
+        - name : shenhengheng-rt
+          mountPath : /home/
+      volumes:
+      - name: shenhengheng-rt
+        persistentVolumeClaim:
+          claimName: shenhengheng-rt-pv-claim
